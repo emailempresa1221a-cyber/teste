@@ -344,159 +344,21 @@
         .order-summary-btn svg {
             width: 18px;
             height: 18px;
-            transition: transform 0.3s ease;
             flex-shrink: 0;
+            transition: transform 0.3s ease;
         }
 
         .order-summary-btn.expanded svg {
             transform: rotate(180deg);
         }
 
-        /* ========== SECTION TITLE ========== */
-        .section-title {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-        }
-
-        /* ========== PAYMENT OPTIONS ========== */
-        .payment-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .payment-option {
-            border: 2px solid var(--border-light);
-            border-radius: 10px;
-            padding: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: var(--white);
-        }
-
-        .payment-option:active {
-            border-color: var(--accent-blue);
-            background: rgba(37, 99, 235, 0.02);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .payment-label {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            position: relative;
-        }
-
-        .payment-icon {
-            width: 28px;
-            height: 28px;
-            color: var(--text-gray);
-            flex-shrink: 0;
-            transition: color 0.3s ease;
-        }
-
-        .payment-option.selected .payment-icon {
-            color: var(--accent-blue);
-        }
-
-        .payment-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .payment-text {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            margin-bottom: 0.2rem;
-        }
-
-        .payment-subtext {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            font-weight: 500;
-        }
-
-        .payment-badges {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .payment-badge {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05));
-            color: var(--accent-blue);
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.35rem 0.65rem;
-            border-radius: 6px;
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            white-space: nowrap;
-            text-transform: uppercase;
-            letter-spacing: 0.2px;
-        }
-
-        .radio-indicator {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid var(--border-light);
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .payment-option.selected .radio-indicator {
-            border-color: var(--accent-blue);
-            background: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .payment-option.selected .radio-indicator::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 8px;
-            height: 8px;
-            background-color: white;
-            border-radius: 50%;
-        }
-
-        /* ========== PAYMENT CONTENT ========== */
-        .payment-content {
-            display: none;
-            padding: 0 1.1rem 1.1rem 1.1rem;
-            border-top: 1px solid var(--border-light);
-            margin-top: 0;
-            padding-top: 1.1rem;
-            animation: expandDown 0.3s ease-out;
-        }
-
-        @keyframes expandDown {
-            from {
-                opacity: 0;
-                max-height: 0;
-            }
-            to {
-                opacity: 1;
-                max-height: 600px;
-            }
-        }
-
-        .payment-option.selected .payment-content {
-            display: block;
-        }
-
-        /* ========== FORM ELEMENTS ========== */
+        /* ========== FORM STYLES ========== */
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
         }
 
         .form-label {
@@ -537,16 +399,6 @@
             color: #94a3b8;
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-        }
-
-        .form-row.three-cols {
-            grid-template-columns: 2fr 1fr 1fr;
-        }
-
         /* ========== PIX INSTRUCTIONS ========== */
         .pix-instructions {
             font-size: 0.85rem;
@@ -561,15 +413,6 @@
         .pix-instructions strong {
             color: var(--text-dark);
             font-weight: 700;
-        }
-
-        .pix-instructions ol {
-            margin-left: 1.3rem;
-            margin-top: 0.6rem;
-        }
-
-        .pix-instructions li {
-            margin-bottom: 0.4rem;
         }
 
         .pix-highlight {
@@ -855,11 +698,14 @@
         }
 
         .pix-code-actions {
-            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .pix-copy-btn {
-            background: linear-gradient(135deg, var(--success-green), #059669);
+            background: linear-gradient(135deg, #059669, #047857);
             color: white;
             border: none;
             padding: 0.85rem 1.5rem;
@@ -875,123 +721,13 @@
             box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
         }
 
-        .pix-copy-btn:active:not(:disabled) {
+        .pix-copy-btn:active {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
         }
 
         .pix-copy-btn.copied {
             background: linear-gradient(135deg, #10b981, #059669);
-        }
-
-        .pix-copy-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        .pix-info-box {
-            background: rgba(5, 150, 105, 0.08);
-            border-left: 4px solid var(--success-green);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: left;
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
-
-        .pix-info-box strong {
-            color: var(--text-dark);
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .pix-info-box ol {
-            margin-left: 1.3rem;
-        }
-
-        .pix-info-box li {
-            margin-bottom: 0.4rem;
-        }
-
-        /* ========== PIX INTRO SECTION ========== */
-        .pix-intro-section {
-            background: linear-gradient(135deg, rgba(5, 150, 105, 0.04), rgba(16, 185, 129, 0.04));
-            border: 2px solid rgba(5, 150, 105, 0.15);
-            border-radius: 12px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-        }
-
-        .pix-intro-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: scaleIn 0.5s ease-out;
-        }
-
-        .pix-intro-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.3px;
-        }
-
-        .pix-intro-description {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .pix-intro-description strong {
-            color: var(--text-dark);
-            font-weight: 700;
-        }
-
-        .generate-pix-btn {
-            background: linear-gradient(135deg, var(--success-green), #059669);
-            color: white;
-            border: none;
-            padding: 0.95rem 2rem;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.4px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .generate-pix-btn:active {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
-        }
-
-        .generate-pix-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        /* ========== PIX ACTIONS SECTION ========== */
-        .pix-code-actions-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .pix-actions-row {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-            flex-wrap: wrap;
         }
 
         .already-paid-btn {
@@ -1067,96 +803,92 @@
             font-weight: 500;
         }
 
-        .loading-dots {
-            display: inline-block;
-            margin-left: 0.3rem;
+        /* ========== PAYMENT OPTIONS ========== */
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
-        .loading-dots span {
-            animation: blink 1.4s infinite;
-        }
-
-        .loading-dots span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .loading-dots span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes blink {
-            0%, 60%, 100% {
-                opacity: 0.3;
-            }
-            30% {
-                opacity: 1;
-            }
-        }
-
-        /* ========== CARD FORM SECTION ========== */
-        .card-form-section {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .card-form-section .form-group:last-child {
-            margin-bottom: 0;
-        }
-
-        /* ========== UNAVAILABLE SECTION ========== */
-        .unavailable-section {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.04), rgba(220, 38, 38, 0.04));
-            border: 2px solid rgba(239, 68, 68, 0.15);
-            border-radius: 12px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-        }
-
-        .unavailable-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .unavailable-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.3px;
-        }
-
-        .unavailable-message {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .back-btn {
-            background: linear-gradient(135deg, #64748b, #475569);
-            color: white;
-            border: none;
-            padding: 0.85rem 1.5rem;
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid var(--border-light);
             border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            letter-spacing: 0.3px;
-            display: inline-flex;
-            align-items: center;
+            background: var(--white);
+            gap: 0.75rem;
+        }
+
+        .payment-option:hover {
+            border-color: var(--accent-blue);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.02), rgba(37, 99, 235, 0.01));
+        }
+
+        .payment-option.selected {
+            border-color: var(--accent-blue);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(37, 99, 235, 0.04));
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .payment-option svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            color: var(--accent-blue);
+        }
+
+        .payment-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .payment-text {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .payment-subtext {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .payment-badges {
+            display: flex;
             gap: 0.5rem;
-            box-shadow: 0 4px 12px rgba(100, 116, 139, 0.3);
+            flex-wrap: wrap;
         }
 
-        .back-btn:active {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(100, 116, 139, 0.35);
+        .payment-badge {
+            background: var(--accent-blue);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            white-space: nowrap;
         }
 
-        /* ========== RESPONSIVE - MOBILE ========== */
+        .radio-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--border-light);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option.selected .radio-indicator {
+            border-color: var(--accent-blue);
+            background: var(--accent-blue);
+            box-shadow: inset 0 0 0 3px white;
+        }
+
+        /* ========== RESPONSIVE ========== */
         @media (max-width: 640px) {
             .main-container {
                 padding: 1rem;
@@ -1190,7 +922,6 @@
             }
         }
 
-        /* ========== RESPONSIVE - DESKTOP ========== */
         @media (min-width: 1024px) {
             .header-amount-content {
                 flex-direction: row;
@@ -1224,7 +955,6 @@
             }
         }
 
-        /* ========== UTILITIES ========== */
         .hidden {
             display: none;
         }
@@ -1236,6 +966,18 @@
             stroke-width: 0;
             stroke: currentColor;
             fill: currentColor;
+        }
+
+        /* ========== ERRO MESSAGE ========== */
+        .error-message {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(220, 38, 38, 0.08));
+            border: 2px solid rgba(239, 68, 68, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            color: #dc2626;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -1265,18 +1007,8 @@
             <div class="header-amount-content">
                 <div class="amount-info">
                     <span class="amount-label">Valor Total a Pagar</span>
-                    <div class="amount-value">R$ 247,00</div>
+                    <div class="amount-value" id="amountValue">R$ 0,00</div>
                     <div class="amount-description">Sem taxas adicionais</div>
-                    <div class="amount-breakdown">
-                        <div class="breakdown-item">
-                            <span>📦</span>
-                            <span><strong>3 itens</strong></span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span>🚚</span>
-                            <span><strong>Frete incluído</strong></span>
-                        </div>
-                    </div>
                 </div>
                 <div class="trust-indicators">
                     <div class="trust-badge">
@@ -1326,191 +1058,74 @@
                 <!-- Order Details -->
                 <div class="order-details" id="orderDetails">
                     <div class="order-item">
-                        <span class="order-item-name">Filtro de Ar</span>
-                        <span class="order-item-price">R$ 89,00</span>
+                        <span class="order-item-name">Peça Hyundai - Filtro de Ar</span>
+                        <span class="order-item-price">R$ 89,90</span>
                     </div>
                     <div class="order-item">
-                        <span class="order-item-name">Óleo Sintético 5L</span>
-                        <span class="order-item-price">R$ 95,00</span>
+                        <span class="order-item-name">Peça Hyundai - Óleo Sintético</span>
+                        <span class="order-item-price">R$ 125,00</span>
                     </div>
                     <div class="order-item">
-                        <span class="order-item-name">Pastilhas de Freio</span>
-                        <span class="order-item-price">R$ 63,00</span>
+                        <span class="order-item-name">Frete Expresso</span>
+                        <span class="order-item-price">R$ 32,10</span>
                     </div>
                     <div class="order-total">
                         <span>Total</span>
-                        <span>R$ 247,00</span>
+                        <span id="orderTotal">R$ 247,00</span>
                     </div>
                 </div>
 
-                <!-- Payment Content Wrapper (substitui todo o conteúdo abaixo) -->
-                <div class="payment-content-wrapper" id="paymentContentWrapper">
-                    <!-- PIX Content Container -->
-                    <div id="pixCodeContent" class="hidden">
-                        <!-- PIX Intro Section -->
-                        <div id="pixIntroSection" class="pix-intro-section">
-                            <div class="pix-intro-icon">💳</div>
-                            <div class="pix-intro-title">Pagamento via Pix</div>
-                            <div class="pix-intro-description">
-                                Clique no botão abaixo para <strong>gerar seu código Pix</strong>. Você poderá copiar e colar no seu banco para completar o pagamento de forma segura e instantânea.
-                            </div>
-                            <button class="generate-pix-btn" onclick="generatePixCodeSection()">
-                                <span>✓</span>
-                                <span>Gerar Código Pix</span>
-                            </button>
-                        </div>
+                <!-- Payment Methods Title -->
+                <h3 id="paymentMethodTitle" style="font-size: 1rem; margin-bottom: 1rem; color: var(--text-dark); font-weight: 700;">Escolha a forma de pagamento</h3>
 
-                        <!-- PIX Loading Screen -->
-                        <div id="pixLoadingScreen" class="pix-loading-screen">
-                            <div class="loading-spinner"></div>
-                            <div class="loading-text">Gerando seu código Pix<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span></div>
-                            <div class="loading-subtext">Aguarde um momento</div>
-                        </div>
-
-                        <!-- PIX Code Section (hidden initially) -->
-                        <div id="pixCodeSection" class="pix-code-section hidden">
-                            <div class="pix-code-header">
-                                <div class="pix-code-icon">✓</div>
-                                <div class="pix-code-title">Código Pix Gerado com Sucesso!</div>
-                                <div class="pix-code-subtitle">Copie o código abaixo e cole no seu banco para completar o pagamento</div>
-                            </div>
-                            
-                            <div class="pix-code-display-wrapper">
-                                <div class="pix-code-display" id="pixCodeDisplay">
-                                    00020126580014br.gov.bcb.pix0136xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx5204000053039865802BR5913HYUNDAI PECAS6009SAO PAULO62410503***63041D3D
-                                </div>
-                            </div>
-
-                            <div class="pix-code-actions-wrapper">
-                                <div class="pix-actions-row">
-                                    <button class="pix-copy-btn" onclick="copyPixCode(event)">
-                                        <span id="copyBtnIcon">📋</span>
-                                        <span id="copyBtnText">Copiar Código Pix</span>
-                                    </button>
-                                    <button class="already-paid-btn" onclick="redirectToPaymentConfirmation()">
-                                        <span>✓</span>
-                                        <span>Já Paguei</span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="pix-info-box">
-                                <strong>Como proceder:</strong>
-                                <ol>
-                                    <li>Copie o código Pix acima usando o botão</li>
-                                    <li>Abra o aplicativo do seu banco</li>
-                                    <li>Selecione a opção "Pix Copia e Cola"</li>
-                                    <li>Cole o código e confirme o pagamento</li>
-                                    <li>Pronto! Seu pedido será processado automaticamente</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card Form Section -->
-                    <div id="cardFormContent" class="hidden">
-                        <div class="card-form-section">
-                            <div class="form-group">
-                                <label class="form-label">Número</label>
-                                <input type="text" class="form-input" placeholder="0000 0000 0000 0000" maxlength="19">
-                            </div>
-                            <div class="form-row three-cols">
-                                <div class="form-group">
-                                    <label class="form-label">Validade</label>
-                                    <input type="text" class="form-input" placeholder="MM/AA" maxlength="5">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">CVV</label>
-                                    <input type="text" class="form-input" placeholder="123" maxlength="4">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Nome</label>
-                                <input type="text" class="form-input" placeholder="Como impresso">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Parcelas</label>
-                                <select class="form-select">
-                                    <option>1x de R$ 247,00</option>
-                                    <option>2x de R$ 123,50</option>
-                                    <option>3x de R$ 82,33</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Unavailable Section -->
-                    <div id="unavailableContent" class="hidden">
-                        <div class="unavailable-section">
-                            <div class="unavailable-icon">❌</div>
-                            <div class="unavailable-title">Forma de Pagamento Indisponível</div>
-                            <div class="unavailable-message">Infelizmente, a forma de pagamento selecionada não está disponível para esta compra no momento.</div>
-                            <button class="back-btn" onclick="goBackToPaymentMethods()">
-                                <span>←</span>
-                                <span>Voltar</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <h2 class="section-title" id="paymentMethodTitle">Forma de Pagamento</h2>
-
+                <!-- Payment Options -->
                 <div class="payment-options" id="paymentOptions">
-                    <!-- Opção Pix -->
                     <div class="payment-option" id="option-pix" onclick="selectPayment('pix')">
-                        <div class="payment-label">
-                            <svg class="payment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                                <path d="M12 9v6"></path>
-                                <path d="M9 12h6"></path>
-                            </svg>
-                            <div class="payment-info">
-                                <div class="payment-text">Pix</div>
-                                <div class="payment-subtext">Instantâneo</div>
-                            </div>
-                            <div class="payment-badges">
-                                <span class="payment-badge">Imediato</span>
-                            </div>
-                            <div class="radio-indicator"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="9" y1="9" x2="15" y2="9"></line>
+                            <line x1="9" y1="15" x2="15" y2="15"></line>
+                        </svg>
+                        <div class="payment-info">
+                            <div class="payment-text">PIX</div>
+                            <div class="payment-subtext">Instantâneo</div>
                         </div>
+                        <div class="payment-badges">
+                            <span class="payment-badge">Agora</span>
+                        </div>
+                        <div class="radio-indicator"></div>
                     </div>
 
-                    <!-- Opção Cartão -->
                     <div class="payment-option" id="option-credit" onclick="selectPayment('credit')">
-                        <div class="payment-label">
-                            <svg class="payment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                                <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            <div class="payment-info">
-                                <div class="payment-text">Cartão</div>
-                                <div class="payment-subtext">Visa, Mastercard</div>
-                            </div>
-                            <div class="payment-badges">
-                                <span class="payment-badge">Até 3x</span>
-                            </div>
-                            <div class="radio-indicator"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                        <div class="payment-info">
+                            <div class="payment-text">Cartão de Crédito</div>
+                            <div class="payment-subtext">Parcelado em até 12x</div>
                         </div>
+                        <div class="payment-badges">
+                            <span class="payment-badge">12x</span>
+                        </div>
+                        <div class="radio-indicator"></div>
                     </div>
 
-                    <!-- Opção Boleto -->
                     <div class="payment-option" id="option-boleto" onclick="selectPayment('boleto')">
-                        <div class="payment-label">
-                            <svg class="payment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                            </svg>
-                            <div class="payment-info">
-                                <div class="payment-text">Boleto</div>
-                                <div class="payment-subtext">Até 3 dias</div>
-                            </div>
-                            <div class="payment-badges">
-                                <span class="payment-badge">3 dias</span>
-                            </div>
-                            <div class="radio-indicator"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                        <div class="payment-info">
+                            <div class="payment-text">Boleto</div>
+                            <div class="payment-subtext">Até 3 dias</div>
                         </div>
+                        <div class="payment-badges">
+                            <span class="payment-badge">3 dias</span>
+                        </div>
+                        <div class="radio-indicator"></div>
                     </div>
                 </div>
 
@@ -1520,6 +1135,39 @@
                         <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                     </svg>
                     <span><strong>SSL 256 bits</strong> e certificação <strong>PCI DSS</strong></span>
+                </div>
+
+                <!-- Payment Content Wrapper -->
+                <div class="payment-content-wrapper" id="paymentContentWrapper">
+                    <!-- PIX Code Content -->
+                    <div id="pixCodeContent" class="hidden">
+                        <div class="pix-code-section" id="pixCodeSection">
+                            <div class="pix-code-header">
+                                <div class="pix-code-icon">📱</div>
+                                <h2 class="pix-code-title">Escaneie o QR Code</h2>
+                                <p class="pix-code-subtitle">Use o seu app bancário para escanear o código abaixo</p>
+                            </div>
+                            <div class="pix-code-display-wrapper">
+                                <div class="pix-code-display" id="pixCodeDisplay">
+                                    Carregando código PIX...
+                                </div>
+                            </div>
+                            <div class="pix-code-actions">
+                                <button class="pix-copy-btn" onclick="copyPixCode(event)">
+                                    <span id="copyBtnIcon">📋</span>
+                                    <span id="copyBtnText">Copiar Código Pix</span>
+                                </button>
+                                <button class="already-paid-btn" onclick="goBackToPaymentMethods()">
+                                    ↩️ Voltar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="pix-loading-screen" id="pixLoadingScreen">
+                            <div class="loading-spinner"></div>
+                            <div class="loading-text">Gerando código PIX</div>
+                            <div class="loading-subtext">Aguarde um momento...</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1534,6 +1182,43 @@
 
     <script>
         let currentPaymentType = null;
+        let urlParams = new URLSearchParams(window.location.search);
+        let subtotal = urlParams.get('subtotal');
+        let qrcode = urlParams.get('qrcode');
+
+        // Função para formatar valor em reais
+        function formatCurrency(value) {
+            const num = parseFloat(value);
+            if (isNaN(num)) return 'R$ 0,00';
+            return 'R$ ' + num.toFixed(2).replace('.', ',');
+        }
+
+        // Inicializar página com parâmetros da URL
+        function initializePageWithURLParams() {
+            // Verificar se subtotal foi fornecido
+            if (!subtotal) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.textContent = '⚠️ Parâmetro "subtotal" não encontrado na URL. Use: ?subtotal=21.98';
+                document.querySelector('.payment-card').insertAdjacentElement('beforebegin', errorDiv);
+                return;
+            }
+
+            // Atualizar valor total no header
+            const amountValue = document.getElementById('amountValue');
+            amountValue.textContent = formatCurrency(subtotal);
+
+            // Atualizar valor total no resumo do pedido
+            const orderTotal = document.getElementById('orderTotal');
+            orderTotal.textContent = formatCurrency(subtotal);
+
+            // Se QR Code foi fornecido, armazená-lo
+            if (qrcode) {
+                console.log('QR Code PIX recebido da URL');
+            } else {
+                console.warn('Parâmetro "qrcode" não fornecido. Um código será gerado.');
+            }
+        }
 
         function selectPayment(type) {
             // Remove seleção anterior
@@ -1572,10 +1257,6 @@
             // Mostrar conteúdo apropriado
             if (paymentType === 'pix') {
                 showPixCodeContent();
-            } else if (paymentType === 'credit') {
-                showCardFormContent();
-            } else if (paymentType === 'boleto') {
-                showUnavailableContent();
             }
         }
 
@@ -1601,8 +1282,6 @@
 
         function hideAllContent() {
             document.getElementById('pixCodeContent').classList.add('hidden');
-            document.getElementById('cardFormContent').classList.add('hidden');
-            document.getElementById('unavailableContent').classList.add('hidden');
         }
 
         function showPixCodeContent() {
@@ -1614,6 +1293,9 @@
             pixCodeContent.classList.remove('hidden');
             paymentContentWrapper.classList.add('active');
             
+            // Gerar/carregar código PIX
+            generatePixCodeSection();
+            
             // Atualizar o botão de confirmação
             confirmBtn.innerText = 'Voltar';
             confirmBtn.onclick = function() {
@@ -1622,24 +1304,23 @@
         }
 
         function generatePixCodeSection() {
-            const pixIntroSection = document.getElementById('pixIntroSection');
             const pixLoadingScreen = document.getElementById('pixLoadingScreen');
             const pixCodeSection = document.getElementById('pixCodeSection');
             
-            // Ocultar seção introdutiva com animação
-            pixIntroSection.style.opacity = '0';
-            pixIntroSection.style.transition = 'opacity 0.3s ease';
+            // Mostrar tela de carregamento
+            pixLoadingScreen.classList.add('active');
+            pixCodeSection.classList.add('hidden');
             
-            // Mostrar tela de carregamento após ocultar a intro
-            setTimeout(() => {
-                pixIntroSection.classList.add('hidden');
-                pixLoadingScreen.classList.add('active');
-            }, 300);
-            
-            // Gerar novo código PIX e mostrar após 2 segundos (simular carregamento)
+            // Gerar novo código PIX após 1 segundo (simular carregamento)
             setTimeout(() => {
                 const pixCodeDisplay = document.getElementById('pixCodeDisplay');
-                pixCodeDisplay.innerText = generatePixCode();
+                
+                // Usar QR Code da URL se fornecido, caso contrário gerar um
+                if (qrcode) {
+                    pixCodeDisplay.innerText = qrcode;
+                } else {
+                    pixCodeDisplay.innerText = generatePixCode();
+                }
                 
                 // Ocultar tela de carregamento
                 pixLoadingScreen.classList.remove('active');
@@ -1647,45 +1328,8 @@
                 // Mostrar seção de código
                 setTimeout(() => {
                     pixCodeSection.classList.remove('hidden');
-                    pixCodeSection.offsetHeight;
                 }, 100);
-            }, 2000);
-        }
-
-        function redirectToPaymentConfirmation() {
-            // Redirecionar para um link específico
-            // Você pode alterar este URL para o link desejado
-            const confirmationLink = 'https://example.com/payment-confirmation';
-            window.location.href = confirmationLink;
-        }
-
-        function showCardFormContent() {
-            hideAllContent();
-            const paymentContentWrapper = document.getElementById('paymentContentWrapper');
-            const cardFormContent = document.getElementById('cardFormContent');
-            const confirmBtn = document.getElementById('confirmBtn');
-            
-            cardFormContent.classList.remove('hidden');
-            paymentContentWrapper.classList.add('active');
-            
-            // Atualizar o botão de confirmação
-            confirmBtn.innerText = 'Processar Pagamento';
-            confirmBtn.onclick = function() {
-                processCardPayment();
-            };
-        }
-
-        function showUnavailableContent() {
-            hideAllContent();
-            const paymentContentWrapper = document.getElementById('paymentContentWrapper');
-            const unavailableContent = document.getElementById('unavailableContent');
-            const confirmBtn = document.getElementById('confirmBtn');
-            
-            unavailableContent.classList.remove('hidden');
-            paymentContentWrapper.classList.add('active');
-            
-            // Atualizar o botão de confirmação (será substituído pelo botão voltar do unavailable)
-            confirmBtn.classList.add('hidden');
+            }, 1000);
         }
 
         function goBackToPaymentMethods() {
@@ -1706,27 +1350,12 @@
             }
             
             // Restaurar o botão de confirmação
-            confirmBtn.classList.remove('hidden');
             confirmBtn.innerText = 'Confirmar Pagamento';
             confirmBtn.onclick = function() {
                 confirmPayment();
             };
             
             currentPaymentType = null;
-        }
-
-        function processCardPayment() {
-            const btn = document.getElementById('confirmBtn');
-            const originalText = btn.innerText;
-            
-            btn.innerText = 'Processando...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                alert('Pagamento via Cartão iniciado com sucesso!');
-                btn.innerText = originalText;
-                btn.disabled = false;
-            }, 1500);
         }
 
         function copyPixCode(event) {
@@ -1766,10 +1395,9 @@
             return pixCode;
         }
 
-        // Inicializar código PIX ao carregar a página
+        // Inicializar ao carregar a página
         window.addEventListener('load', function() {
-            const pixCodeDisplay = document.getElementById('pixCodeDisplay');
-            pixCodeDisplay.innerText = generatePixCode();
+            initializePageWithURLParams();
         });
     </script>
 </body>
