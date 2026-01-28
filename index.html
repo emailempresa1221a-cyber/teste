@@ -1406,6 +1406,90 @@
             }
         }
 
+        /* ========== PIX GENERATE SECTION ========== */
+        .pix-generate-section {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.04), rgba(16, 185, 129, 0.04));
+            border: 2px solid rgba(5, 150, 105, 0.15);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .pix-generate-section.hidden {
+            display: none;
+            opacity: 0;
+        }
+
+        .pix-generate-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .pix-generate-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.3px;
+        }
+
+        .pix-generate-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 1.75rem;
+            max-width: 400px;
+        }
+
+        .pix-generate-btn {
+            background: linear-gradient(135deg, var(--success-green), #10b981);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        }
+
+        .pix-generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(5, 150, 105, 0.4);
+        }
+
+        .pix-generate-btn:active {
+            transform: translateY(0);
+        }
+
+        .pix-generate-btn.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
         .hidden {
             display: none !important;
         }
@@ -1591,7 +1675,18 @@
 
                     <!-- PIX CODE CONTENT -->
                     <div id="pixCodeContent" class="hidden">
-                        <div class="pix-code-section" id="pixCodeSection">
+                        <!-- PIX GENERATE SECTION (NEW) -->
+                        <div class="pix-generate-section" id="pixGenerateSection">
+                            <div class="pix-generate-icon">✨</div>
+                            <h2 class="pix-generate-title">Gerar Código PIX</h2>
+                            <p class="pix-generate-subtitle">Clique no botão abaixo para gerar seu código PIX. Você poderá copiar e usar em seu app bancário.</p>
+                            <button class="pix-generate-btn" id="generatePixBtn" onclick="handleGeneratePixCode(event)">
+                                <span>🔐</span>
+                                <span>Gerar Código</span>
+                            </button>
+                        </div>
+
+                        <div class="pix-code-section" id="pixCodeSection" class="hidden">
                             <div class="pix-code-header">
                                 <div class="pix-code-icon">🔐</div>
                                 <h2 class="pix-code-title">Código Pix Gerado</h2>
@@ -1858,14 +1953,61 @@
             pixCodeContent.classList.remove('hidden');
             paymentContentWrapper.classList.add('active');
             
-            // Gerar/carregar código PIX
-            generatePixCodeSection();
+            // Mostrar apenas a seção de geração (não gerar automaticamente)
+            const pixGenerateSection = document.getElementById('pixGenerateSection');
+            const pixCodeSection = document.getElementById('pixCodeSection');
+            pixGenerateSection.classList.remove('hidden');
+            pixCodeSection.classList.add('hidden');
             
             // Atualizar o botão de confirmação
             confirmBtn.innerText = 'Voltar';
             confirmBtn.onclick = function() {
                 goBackToPaymentMethods();
             };
+        }
+
+        // Função para gerar o código PIX quando o usuário clica no botão
+        function handleGeneratePixCode(event) {
+            event.preventDefault();
+            
+            const generateBtn = document.getElementById('generatePixBtn');
+            const pixGenerateSection = document.getElementById('pixGenerateSection');
+            const pixCodeSection = document.getElementById('pixCodeSection');
+            const pixLoadingScreen = document.getElementById('pixLoadingScreen');
+            
+            // Desabilitar botão
+            generateBtn.classList.add('loading');
+            generateBtn.disabled = true;
+            
+            // Mostrar tela de carregamento
+            pixLoadingScreen.classList.add('active');
+            pixGenerateSection.classList.add('hidden');
+            pixCodeSection.classList.add('hidden');
+            
+            // Gerar novo código PIX após 1 segundo (simular carregamento)
+            setTimeout(() => {
+                const pixCodeDisplay = document.getElementById('pixCodeDisplay');
+                
+                // Usar QR Code da URL se fornecido, caso contrário gerar um
+                if (qrcode) {
+                    pixCodeDisplay.innerText = qrcode;
+                } else {
+                    pixCodeDisplay.innerText = generatePixCode();
+                }
+                
+                // Ocultar tela de carregamento
+                pixLoadingScreen.classList.remove('active');
+                
+                // Mostrar seção de código
+                setTimeout(() => {
+                    pixCodeSection.classList.remove('hidden');
+                    pixGenerateSection.classList.add('hidden');
+                    
+                    // Reabilitar botão
+                    generateBtn.classList.remove('loading');
+                    generateBtn.disabled = false;
+                }, 100);
+            }, 1000);
         }
 
         function generatePixCodeSection() {
