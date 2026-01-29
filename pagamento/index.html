@@ -2062,7 +2062,10 @@
             const pixCode = pixCodeDisplay.innerText.trim();
             const btn = event.target.closest('.pix-copy-btn');
             
-            navigator.clipboard.writeText(pixCode).then(() => {
+            // Remover "+" e substituir por espaço
+            const pixCodeFormatted = pixCode.replace(/\+/g, ' ');
+            
+            navigator.clipboard.writeText(pixCodeFormatted).then(() => {
                 showSuccessModal();
                 
                 const copyBtnIcon = document.getElementById('copyBtnIcon');
@@ -2099,7 +2102,10 @@
             const pixCodeDisplay = document.getElementById('pixCodeDisplay');
             const pixCode = pixCodeDisplay.innerText.trim();
             
-            navigator.clipboard.writeText(pixCode).then(() => {
+            // Remover "+" e substituir por espaço
+            const pixCodeFormatted = pixCode.replace(/\+/g, ' ');
+            
+            navigator.clipboard.writeText(pixCodeFormatted).then(() => {
                 const modalStatus = document.getElementById('modalStatus');
                 const originalContent = modalStatus.innerHTML;
                 
